@@ -1,0 +1,23 @@
+<div class="card p-0 content">
+  <div class="py-3 px-4 border-b">
+    <div class="sm:flex sm:items-center">
+      <div>
+        <h1>Simple Analytics</h1>
+        <p><span id="pageviews"></span> Seitenaufrufe im letzten Monat.</p>
+      </div>
+      <div class="mt-2 sm:mt-0 sm:flex-auto sm:text-right">
+        <a href="https://simpleanalytics.com/essort.ch" class="btn-primary">Alle Statistiken</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-3 px-4">
+    <div id="chart" data-hostname="essort.ch" style="aspect-ratio: 2/1" data-types="visitors, pageviews" data-border-width="2" data-page-views-color="#19a1e6" data-visitors-color="#00d9ff" data-show-logo="false" data-page-views-selector="#pageviews">
+      <p style="margin: 0">Lade Statistik…</p>
+    </div>
+    <script
+      async
+      data-chart-selectors="#chart"
+      src="https://scripts.simpleanalyticscdn.com/embed.js"
+    ></script>
+  </div>
+</div>
