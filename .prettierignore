@@ -1,0 +1,6 @@
+# Ignore all following files:
+*.yaml
+*.html
+*.js
+*.md
+*.css
