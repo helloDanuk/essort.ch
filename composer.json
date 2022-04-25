@@ -13,9 +13,11 @@
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
+        "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "rias/statamic-redirect": "^2.1",
         "statamic/cms": "3.3.*",
-        "laravel/sanctum": "^2.14"
+        "statamic/seo-pro": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
