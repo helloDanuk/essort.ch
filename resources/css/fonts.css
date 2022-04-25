@@ -1,0 +1,32 @@
+@font-face{
+    font-family:"Avenir Next W01";
+    src:url("/fonts/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2") format("woff2"),
+        url("/fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback;
+}
+@font-face{
+    font-family:"Avenir Next W01";
+    src:url("/fonts/7377dbe6-f11a-4a05-b33c-bc8ce1f60f84.woff2") format("woff2"),
+        url("/fonts/92b66dbd-4201-4ac2-a605-4d4ffc8705cc.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-display: fallback;
+}
+@font-face{
+    font-family:"Avenir Next W01";
+    src:url("/fonts/14c73713-e4df-4dba-933b-057feeac8dd1.woff2") format("woff2"),
+        url("/fonts/b8e906a1-f5e8-4bf1-8e80-82c646ca4d5f.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: fallback;
+}
+@font-face{
+    font-family:"Avenir Next W01";
+    src:url("/fonts/5c57b2e2-f641-421e-a95f-65fcb47e409a.woff2") format("woff2"),
+        url("/fonts/181c847e-cdbc-43d5-ae14-03a81c8953b4.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+}
