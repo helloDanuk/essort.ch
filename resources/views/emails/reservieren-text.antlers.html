@@ -1,0 +1,37 @@
+Test
+
+The current date/time:
+date: {{ date }}
+now: {{ now }}
+today: {{ today }}
+
+The site home page:
+site_url: {{ site_url }}
+
+The handle of the site:
+site: {{ site }}
+locale {{ locale }}
+
+Any configuration values:
+Is the CP enabled? {{ config:statamic:cp:enabled }}
+Which Antlers Parser? {{ config:statamic:antlers:version }}
+
+Any data from Global Sets:
+Test Name: {{ website_einstellungen:name }}
+Test Adresse: {{ website_einstellungen:adresse }}
+
+
+All of the submitted form values:
+Name: {{ name }}
+Age: {{ age }}
+…
+
+
+A fields array: (Display: Value…)
+{{ fields }}
+    {{ display }}: {{ value }}
+{{ /fields }}
+
+in verschiedener Darstellung (=> optimierte Darstellung für Plain-Text Nachrichten)
+{{ fields }}{{ display }}: {{ value }}
+{{ /fields }}

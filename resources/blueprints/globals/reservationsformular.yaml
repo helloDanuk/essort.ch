@@ -1,0 +1,21 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: code_snippet
+        field:
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: spaces
+          indent_size: 4
+          key_map: default
+          line_numbers: true
+          line_wrapping: true
+          display: 'Code Snippet'
+          type: code
+          icon: code
+          listable: hidden
+          instructions_position: above
+          read_only: false

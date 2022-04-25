@@ -1,16 +1,22 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}">
+<html lang="{{ site:locale replace="_|-" }}">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title ?? site:name }}</title>
-        <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
+        {{ partial:head }}
     </head>
-    <body class="bg-gray-100 font-sans leading-normal text-gray-800">
-        <div class="mx-auto px-2 lg:min-h-screen flex flex-col items-center justify-center">
-            {{ template_content }}
-        </div>
-        <script src="{{ mix src='/js/site.js' }}"></script>
+    <body>
+        {{ template_content }}
+
+        {{# TODO nur aktivieren, falls ich eigenes JS schreibe #}}
+        {{# <script src="{{ mix src='/js/site.js' }}"></script> #}}
+
+        {{ website_einstellungen:footer_scripts }}
+            {{ if production_env_only }}
+                {{ if environment === 'production' }}
+                    {{ code }}
+                {{ /if }}
+            {{ else }}
+                {{ code }}
+            {{ /if }}
+        {{ /website_einstellungen:footer_scripts }}
     </body>
 </html>

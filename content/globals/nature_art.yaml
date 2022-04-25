@@ -1,0 +1,14 @@
+title: 'Nature-Art Bilder'
+data:
+  jahreszeit: herbst
+  fruehling:
+    - {  }
+  sommer:
+    - {  }
+  herbst:
+    -
+      bilder: herbst/Hirsche-am-Madisonriver.jpg
+    -
+      bilder: herbst/Grizzly-Lachsfang.jpg
+  winter:
+    - {  }

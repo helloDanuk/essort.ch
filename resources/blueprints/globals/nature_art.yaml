@@ -1,0 +1,157 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: jahreszeit
+        field:
+          options:
+            fruehling: Frühling
+            sommer: Sommer
+            herbst: Herbst
+            winter: Winter
+          display: Jahreszeit
+          type: button_group
+          icon: button_group
+          instructions: 'Aus der gewählten Jahreszeit werden die unten festgelegten Bilder zufällig auf der Website eingeblendet.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: bilderfundus
+        field:
+          display: Bilderfundus
+          type: section
+          icon: section
+          instructions: 'Bitte nur RGB Bilder hochladen und diese vorgängig mit Optimage gemäss diesen [Einstellungen](/hidden/anleitung-bilder-optimieren.pdf) optimieren.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: fruehling
+        field:
+          mode: table
+          add_row: 'Neues Frühlingbild'
+          reorderable: true
+          display: Frühling
+          type: grid
+          icon: grid
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          fields:
+            -
+              handle: bilder
+              field:
+                mode: list
+                container: nature-art
+                folder: fruehling
+                restrict: true
+                allow_uploads: true
+                show_filename: true
+                max_files: 1
+                display: Bilder
+                type: assets
+                icon: assets
+                listable: hidden
+                instructions_position: above
+                read_only: false
+          min_rows: 1
+          max_rows: 12
+          width: 50
+      -
+        handle: sommer
+        field:
+          mode: table
+          add_row: 'Neues Sommerbild'
+          reorderable: true
+          display: Sommer
+          type: grid
+          icon: grid
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          fields:
+            -
+              handle: bilder
+              field:
+                mode: list
+                container: nature-art
+                folder: sommer
+                restrict: true
+                allow_uploads: true
+                show_filename: true
+                max_files: 1
+                display: Bilder
+                type: assets
+                icon: assets
+                listable: hidden
+                instructions_position: above
+                read_only: false
+          min_rows: 1
+          max_rows: 12
+          width: 50
+      -
+        handle: herbst
+        field:
+          mode: table
+          add_row: 'Neues Herbstbild'
+          reorderable: true
+          display: Herbst
+          type: grid
+          icon: grid
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          fields:
+            -
+              handle: bilder
+              field:
+                mode: list
+                container: nature-art
+                folder: herbst
+                restrict: true
+                allow_uploads: true
+                show_filename: true
+                max_files: 1
+                display: Bilder
+                type: assets
+                icon: assets
+                listable: hidden
+                instructions_position: above
+                read_only: false
+          min_rows: 1
+          max_rows: 12
+          width: 50
+      -
+        handle: winter
+        field:
+          mode: table
+          add_row: 'Neues Winterbild'
+          reorderable: true
+          display: Winter
+          type: grid
+          icon: grid
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          fields:
+            -
+              handle: bilder
+              field:
+                mode: list
+                container: nature-art
+                folder: winter
+                restrict: true
+                allow_uploads: true
+                show_filename: true
+                max_files: 1
+                display: Bilder
+                type: assets
+                icon: assets
+                listable: hidden
+                instructions_position: above
+                read_only: false
+          min_rows: 1
+          max_rows: 12
+          width: 50

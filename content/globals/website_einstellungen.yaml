@@ -1,0 +1,46 @@
+title: 'Website Einstellungen'
+data:
+  name: 'Restaurant Essort'
+  adresse: |-
+    Jubiläumsstrasse 97
+    3005 Bern
+  google_maps_link: 'https://g.page/restaurant-essort'
+  telefon: '031 368 11 11'
+  email: info@essort.ch
+  facebook: 'https://www.facebook.com/essortbern'
+  instagram: 'https://www.instagram.com/restaurant_essort'
+  technischer_kontakt: 'Daniel Kaufmann, hello@danielkaufmann.ch'
+  webserver : 'Das Merkblatt enthält sensible Zugangsdaten und wurde separat abgegeben.'
+  git_workflow : 'https://github.com/helloDanuk/essort.ch'
+  head_scripts:
+    -
+      beschreibung: 'fonts.com Tracking'
+      code: |-
+        <script>
+        var MTIProjectId='e301d509-4fdf-4fb6-a6a0-a16ac915d008';
+         (function() {
+                var mtiTracking = document.createElement('script');
+                mtiTracking.type='text/javascript';
+                mtiTracking.async='true';
+                 mtiTracking.src='mtiFontTrackingCode.js';
+                (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+           })();
+        </script>
+      production_env_only: false
+    -
+      beschreibung: Alpine.JS
+      code: |-
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <!-- Besser vor body Tag? -->
+        <script src="/vendor/statamic/frontend/js/helpers.js"></script>
+      production_env_only: false
+  footer_scripts:
+    -
+      beschreibung: 'Simple Analytics'
+      code: |-
+        <script async defer src="https://sian.essort.ch/latest.js"></script>
+        <noscript><img src="https://sian.essort.ch/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+      production_env_only: true

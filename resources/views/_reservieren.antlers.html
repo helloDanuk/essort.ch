@@ -1,0 +1,193 @@
+{{#
+
+    Fragen:
+    - Wenn ich Views für E-Mails erstelle, entscheidet der E-Mail Client, ob und wann das HTML Template und wann die Textversion verwendet wird? Ich denke JA, siehe die reine Datei der verschickten E-Mail.
+
+#}}
+
+
+{{#
+
+    Fazit aus dem Test:
+
+    - WICHTIG: LESE DEN KOMMENTAR WEITER UNTEN BEI // MANUELLE FELDER NACH {{ fields }}
+
+    - Könnte ich sogar den Samstag bei Mittag ausblenden? NEIN, da HTML bereits geparst wurde, passt sich dies nicht mehr an
+
+    - In Website_einstellungen gibt es ein zusätzliches Skript, welches das Formular benötigt. Dieses muss ich besser an einer anderen Stelle einblenden.
+
+    - Die umgesetzte Lösung muss bei Full Measure Cache funktionieren. Vielleicht Formular einfach ausklammern.
+
+
+    - Zuerst nur mit einem Radio fragen (siehe alpine) wann ich essen möchte. Andere Felder mit conditions ein/ausblenden
+    - Alle Felder erst später einblenden mag vielleicht verwirrend sein, vielleicht besser…
+
+    – …nach der Wine&Dine Auswahl die einzelnen Daten einblenden (ausverkaufte Abende kann ich mit disabled deaktivieren)
+
+    - Ich kann das ganze Formular manuell im Layout mit HTML zusammenbauen ODER mit {{ fields }} durch die einzelnen loopen. Nur bei letzterem habe ich Zugriff auf value, display, type etc. Bei ersterem habe ich nur Zugrid auf old: und muss sonst alles von Hand erstellen.
+
+    - Alles von Hand bietet den Vorteil, dass ich das Form vielleicht für alle Spezanlässe behalten kann und im Frontend einzelne nicht benötigte Felder ausblende. Ich kann wohl auch einfacher Ausverkauft hinzufügen.
+    - Wichtig ist, dass ich die E-Mail View nicht ändern muss. Anpassungen in der Reservierung bei Spez Menüs sollten so einfach wie möglich sein!!
+
+    - Damit ich alle Änderungen im Frontend tätigen kann, aber trotzdem manuell eingreifen kann, könnte ich bei Globals ein Code Fieldtype einfügen, das ich einfach im CP bearbeiten kann und so die Specials hinzufügen kann.
+    - Mit Toogles kann ich das Einblenden steuern und sogar mit weiteren Fieldtypes alles für Ürsu im CP bearbeitbar machen!
+
+    - Bei der {{ fields }} Lösung kann mit if-Conditions nach type oder handle… filtern und so trotzdem das HTML Markup einigermassen steuern. Siehe https://statamic.dev/tags/form-create#prerendered-html
+
+
+    - Wenn ich required Felder ausblende, muss ich eine andere required Regel anwenden -> required_unless:wann,mittag
+    - Die Fehlermeldung muss ich noch besser formatieren… allenfalls von Hand, jeweils direkt zum eigentlichen Feld.
+    - BUG: Laravel Fehlermeldungen sind auf englisch, wenn ich in /lang/de_CH habe. Mit /lang/de funktioniert es!
+
+
+    Gewürze…
+
+#}}
+
+
+
+{{# …redirect="/test" id="contact-form" #}}
+{{ form:reservieren js="alpine" }}
+{{# Ist ein Alias von {{ form:create in="reservieren" }} … {{ /form:create }} #}}
+
+    // First let's check if this is after a submission, and if so, was it successful.
+    // If it was, just show the success message. After all, we don't want them submitting again once they've gotten in touch!
+    {{ if success }}
+        <div class="bg-green-300 text-white p-2">
+            {{ success }}
+            <p>Thanks for filling out the survey! Sorry it was so long.</p>
+        </div>
+    {{ else }}
+        // If we weren't successful, show any errors. If a fresh page load, there's no errors, so do nothing.
+        {{ if errors }}
+            <div class="bg-red-300 text-white p-2">
+                {{ errors }}
+                    {{ value }}<br>
+                {{ /errors }}
+            </div>
+        {{ /if }}
+
+
+
+        // Manuelle Felder
+
+        <hr>
+
+        Auf ein Code Snippet verweisen, welches ich in der Globals einfacher im CP bearbeiten kann.
+        {{# {{ reservieren:specials }}
+            <h1>Hier gibts Code:</h1>
+            {{ code }}
+        {{ /reservieren:specials }} #}}
+
+        {{ fields }}
+
+            {{# Innerhalb des fields array habe ich Zugriff auf weitere Daten, und habe mit {{ field }} ein Magic Feld. Aber dann kann ich wohl schlechter die Spezialfälle bearbeiten? #}}
+
+            {{# handle: {{ handle }} <br>
+            display: {{ display }} <br> #}}
+            {{# Fieldtype ist recht mächtig. Sollte ich vielleicht nutzen?
+                https://statamic.dev/tags/form-create#prerendered-html
+            #}}
+            {{# type: {{ type }} <br> #}}
+            {{# field: {{ field }} <br> #}}
+            {{# error: {{ error }} <br>
+            old: {{ old }} <br>
+            instructions: {{ instructions }} <br>
+            validate: {{ validate }} <br> #}}
+
+            {{# <hr>
+            <label>
+                {{ display }}
+                {{ if validate | contains:required }}
+                    <span class="text-red">*</span>
+                {{ /if }}
+            </label>
+            <div class="p-1">{{ field }}</div>
+            {{ if error }}
+                <p class="text-gray-500">{{ error }}</p>
+            {{ /if }} #}}
+
+
+            <p>Aus der Dokumentaion: This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's type, or even customize the automatic HTML.</p>
+
+            <p>Hier nach handle sortiert (weil spezielles Feld), sonst könnte ich auch nach type === text, select etc. sortieren</p>
+
+            {{ if handle === "wann" }}
+
+                {{ foreach:options as="value|label" }}
+                    <label>
+                        <input
+                            type="radio"
+                            name="{{ handle }}"
+                            value="{{ value }}"
+                            {{ if js_driver }}{{ js_attributes }}{{ /if }}
+                            {{ if old === value }}checked{{ /if }}
+                            {{ if ! old && value === default }}checked{{ /if }}
+                            {{ if validate|contains:required }}required{{ /if }}
+                        >
+                        {{ label !== null ? label : value }}
+                    </label>
+                    {{ unless inline }}
+                        <br>
+                    {{ /unless }}
+                {{ /foreach:options }}
+
+            {{ /if }}
+
+        {{ /fields }}
+
+
+        <hr>
+
+        <p>Test</p>
+
+
+
+        <hr>
+
+
+        {{# <div>
+            <input type="radio" id="" name="drone" value="huey" checked>
+            <label for="huey">Huey</label>
+        </div>
+
+        <div>
+            <input type="radio" id="d" name="drone" value="dewey">
+            <label for="dewey">Dewey</label>
+        </div>
+
+        <div>
+            <input type="radio" id="l" name="drone" value="louie">
+            <label for="louie">Louie</label>
+        </div> #}}
+
+        <template x-if="{{ show_field:name }}">
+            {{# Remember: <template> tags can only contain one root level element. Darum ein div #}}
+            <div>
+                <label>Name</label>
+                <input type="text" name="name" value="{{ old:name }}" x-model="name" />
+            </div>
+        </template>
+
+        <template x-if="{{ show_field:age }}">
+            <div>
+                <label>Age</label>
+                <input type="text" name="age" value="{{ old:age }}" x-model="age" />
+            </div>
+        </template>
+
+
+        <label>Email</label>
+        <input type="text" name="email" value="{{ old:email }}" />
+
+        <label>Message</label>
+        <textarea name="message" rows="5">{{ old:message }}</textarea>
+
+        // Add the honeypot field
+        <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
+
+        // This is just a submit button.
+        <button type="submit">Submit</button>
+    {{ /if }}
+
+{{ /form:reservieren }}

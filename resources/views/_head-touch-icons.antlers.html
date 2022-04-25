@@ -1,0 +1,56 @@
+{{#
+2022 Update to Favicon:
+
+- https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7
+- https://web.dev/building-an-adaptive-favicon/
+
+
+Alles weitere:
+
+- WICHTIG: Das Icon muss auch kreisförmig funktionieren!! wegen Social Media…
+
+- svg aus Illustrator mit Kreis 48x48 speichern und dann im SVG löschen. Dann stimmt das Format.
+
+- https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/
+
+- das apple-touch-icon darf nicht transparent sein! Weil sonst bei den Homeicons schwarz hinzugefügt wird.
+
+- alles im webroot speichern…
+
+site.webmanifest:
+
+- ACHTUNG, Dateipfade in site.manifest anpassen, je nach Version
+- Da ist die Tab- und Backgroundfarbe definiert, die in Andorid angezeigt wird, wenn alle geöffneten Tabs sichtbar sind.
+- "display": "browser" ist die default Einstellung, kann ich weglassen, aber offenbar motzt lighthouse
+- "start_url": "/", ist nicht nötig, darum weglassen?
+- "purpose": "maskable" nachforschen
+
+#}}
+
+<link rel="icon" href="/favicon.ico?v5" sizes="any">
+<link rel="icon" href="/favicon.svg?v5" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v5">
+<link rel="manifest" href="/site.webmanifest">
+
+{{#
+https://css-tricks.com/safari-15-new-ui-theme-colors-and-a-css-tricks-cameo/
+
+If your phone is in Light Appearance mode (Settings -> Display & Brightness), it seems that there is a max darkness that you can set with <meta name="theme-color" content="foo">.
+
+<meta name="theme-color" content="blue"> affects the header in both light and dark mode.
+<meta name="theme-color" content="black"> affects the header in both light and dark mode.
+<meta name="theme-color" content="#ffffff"> affects the header only in light mode.
+
+#}}
+
+{{# <meta name="theme-color" content="#ff7a18"> #}}
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+
+{{#
+für Android sind es 192, definiert in site.webmanifest
+
+Das Android Icon darf transparent sein! Dann wird es auf dem Homescreen transparent dargestellt. realfavicongenerator kann einen Dropshadow hinzufügen (ähnlich den Google Andorid Icons, dieser wird aber direkt ins PNG gespeichert.
+
+(512px wird nur für den Splashscreen verwendet, wenn die Website als nativ App gestartet wird und nicht über den normalen Webbrowser. VERWENDE ICH NICHT, kann ich weglassen)
+#}}

@@ -1,0 +1,72 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: wann
+        field:
+          options:
+            mittag: Mittagessen
+            abend: Abendessen
+            winedine: 'Wine & Dineeee'
+          inline: false
+          cast_booleans: false
+          display: Wann
+          type: radio
+          icon: radio
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: name
+        field:
+          display: Name
+          type: text
+          validate:
+            - 'required_unless:wann,mittag'
+          instructions: 'Hier steht die instruction'
+          instructions_position: above
+          listable: hidden
+          read_only: false
+          input_type: text
+          antlers: false
+          if:
+            wann: 'equals abend'
+      -
+        handle: email
+        field:
+          input_type: email
+          antlers: false
+          display: E-Mail
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: age
+        field:
+          display: Age
+          type: text
+          validate:
+            - required
+            - integer
+          instructions_position: above
+          listable: hidden
+          read_only: false
+          input_type: text
+          antlers: false
+          unless:
+            wann: 'equals winedine'
+      -
+        handle: adoration
+        field:
+          display: 'Level of Adoration'
+          type: text
+          validate: required
+      -
+        handle: comment
+        field:
+          display: Comment
+          type: textarea
+          validate: required

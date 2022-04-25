@@ -1,0 +1,314 @@
+sections:
+  main:
+    display: Hauptteil
+    fields:
+      -
+        handle: name
+        field:
+          input_type: text
+          antlers: false
+          display: Name
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - required
+          instructions_position: above
+          read_only: true
+      -
+        handle: adresse
+        field:
+          antlers: false
+          display: Adresse
+          type: textarea
+          icon: textarea
+          listable: hidden
+          validate:
+            - required
+      -
+        handle: google_maps_link
+        field:
+          placeholder: 'https://goo.gl/maps/2Lpaoj3kPw8Yup2aA'
+          input_type: text
+          antlers: false
+          display: 'Google Maps Link'
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - required
+      -
+        handle: telefon
+        field:
+          input_type: text
+          antlers: false
+          display: Telefon
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - required
+          instructions: 'Zwingend im Format 033 952 17 51'
+      -
+        handle: email
+        field:
+          input_type: email
+          antlers: false
+          display: E-Mail-Adresse
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - required
+      -
+        handle: facebook
+        field:
+          placeholder: 'https://'
+          input_type: text
+          antlers: false
+          display: Facebook
+          type: text
+          icon: text
+          instructions: 'Im Kontakt einen Link zu Facebook hinzufügen.'
+          listable: hidden
+      -
+        handle: instagram
+        field:
+          placeholder: 'https://'
+          input_type: text
+          antlers: false
+          display: Instagram
+          type: text
+          icon: text
+          instructions: 'Im Kontakt einen Link zu Instagram hinzufügen.'
+          listable: hidden
+      -
+        handle: webhosting
+        field:
+          display: 'Angaben zum Webhosting'
+          type: section
+          icon: section
+          listable: hidden
+      -
+        handle: technischer_kontakt
+        field:
+          placeholder: 'Daniel Kaufmann, hello@danielkaufmann.ch'
+          input_type: text
+          antlers: false
+          display: 'Technischer Kontakt'
+          type: text
+          icon: text
+          instructions: 'Die Website wird über den Update Service regelmässig gewartet.'
+          listable: hidden
+      -
+        handle: webserver
+        field:
+          placeholder: 'Das Merkblatt enthält sensible Zugangsdaten und wurde separat abgegeben.'
+          input_type: text
+          antlers: false
+          display: Webserver
+          type: text
+          icon: text
+          instructions: 'Die Website wird bei cyon in Basel gehostet und ist mit Statamic CMS erstellt. Ein Merkblatt listet alle Zugangsdaten auf. Der Webserver- und der CMS Super-Admin Zugang müssen nur in Notfällen, oder wenn Daniel Kaufmann den Support nicht mehr gewährleisten kann, verwendet werden.'
+          listable: hidden
+      -
+        handle: git_workflow
+        field:
+          input_type: text
+          antlers: false
+          display: 'Git Workflow'
+          type: text
+          icon: text
+          instructions: 'Die Website wird mit Git versioniert. Das (private) Remote Repository liegt auf GitHub und dient auch als Backup. Auf der Live-Website ist der `main`-Branch ausgecheckt. Änderungen übers CMS werden einmal täglich committet und gepusht, wobei die im CP optional zusätzlich angebotene Versionierung im Repo ignoriert wird. Zugang zum Repo ist auf Anfrage möglich.'
+          listable: hidden
+          placeholder: 'https://github.com/helloDanuk/essort.ch'
+      -
+        handle: skripte_und_mehr
+        field:
+          display: 'Skripte und weitere Ergänzungen'
+          type: section
+          icon: section
+          instructions: 'WARNUNG: Dieser Abschnitt sollte ausschliesslich von erfahrenen Benutzer*innen bearbeitet werden. Es ist möglich, dass die Website nach Änderungen in diesen Feldern nicht mehr wie gewünscht funktioniert.'
+          listable: hidden
+      -
+        handle: meta_tags
+        field:
+          fields:
+            -
+              handle: beschreibung
+              field:
+                antlers: false
+                display: Beschreibung
+                type: textarea
+                icon: textarea
+                width: 25
+                listable: hidden
+            -
+              handle: code
+              field:
+                theme: material
+                mode: htmlmixed
+                indent_type: spaces
+                indent_size: 4
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                display: Code
+                type: code
+                icon: code
+                listable: hidden
+                width: 75
+            -
+              handle: production_env_only
+              field:
+                display: 'Nur auf der Live-Website (APP_ENV=production) einfügen?'
+                type: toggle
+                icon: toggle
+                width: 100
+                listable: hidden
+          mode: stacked
+          add_row: 'Meta-Tag hinzufügen'
+          reorderable: true
+          display: Meta-Tags
+          type: grid
+          icon: grid
+          instructions: 'Diese Meta-Tags werden in den `<head>`-Bereich der Website eingefügt.'
+          listable: hidden
+      -
+        handle: additional_styles
+        field:
+          fields:
+            -
+              handle: beschreibung
+              field:
+                antlers: false
+                display: Beschreibung
+                type: textarea
+                icon: textarea
+                width: 25
+                listable: hidden
+            -
+              handle: code
+              field:
+                theme: material
+                mode: htmlmixed
+                indent_type: spaces
+                indent_size: 4
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                display: Code
+                type: code
+                icon: code
+                listable: hidden
+                width: 75
+            -
+              handle: eingebunden
+              field:
+                options:
+                  extern: 'externer Link (benötigt komplettes <link>-Tag)'
+                  internal: 'einzelne Stile (das umschliessende <style>-Tag wird ergänzt)'
+                inline: false
+                cast_booleans: false
+                display: 'Eingefügt als…'
+                type: radio
+                icon: radio
+                listable: hidden
+                validate:
+                  - required
+          mode: stacked
+          add_row: 'Stile hinzufügen'
+          reorderable: true
+          display: CSS-Stile
+          type: grid
+          icon: grid
+          instructions: 'Zusätzliche Stile werden in den `<head>`-Bereich der Website eingefügt. Sie können extern verlinkt `<link rel="stylesheet" href="…">` oder im Format `p { color: red }` notiert werden.'
+          listable: hidden
+      -
+        handle: head_scripts
+        field:
+          fields:
+            -
+              handle: beschreibung
+              field:
+                antlers: false
+                display: Beschreibung
+                type: textarea
+                icon: textarea
+                width: 25
+                listable: hidden
+            -
+              handle: code
+              field:
+                theme: material
+                mode: htmlmixed
+                indent_type: spaces
+                indent_size: 4
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                display: Code
+                type: code
+                icon: code
+                listable: hidden
+                width: 75
+            -
+              handle: production_env_only
+              field:
+                display: 'Nur auf der Live-Website (APP_ENV=production) einfügen?'
+                type: toggle
+                icon: toggle
+                width: 100
+                listable: hidden
+          mode: stacked
+          add_row: 'Skript hinzufügen'
+          reorderable: true
+          display: 'Head Skripte'
+          type: grid
+          icon: grid
+          instructions: 'Diese Skripte werden in den `<head>`-Bereich der Website eingefügt.'
+          listable: hidden
+      -
+        handle: footer_scripts
+        field:
+          fields:
+            -
+              handle: beschreibung
+              field:
+                antlers: false
+                display: Beschreibung
+                type: textarea
+                icon: textarea
+                width: 25
+                listable: hidden
+            -
+              handle: code
+              field:
+                theme: material
+                mode: htmlmixed
+                indent_type: spaces
+                indent_size: 4
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                display: Code
+                type: code
+                icon: code
+                listable: hidden
+                width: 75
+            -
+              handle: production_env_only
+              field:
+                display: 'Nur auf der Live-Website (APP_ENV=production) einfügen?'
+                type: toggle
+                icon: toggle
+                width: 100
+                listable: hidden
+          mode: stacked
+          add_row: 'Skript hinzufügen'
+          reorderable: true
+          display: 'Footer Skripte'
+          type: grid
+          icon: grid
+          instructions: 'Diese Skripte werden direkt vor dem schliessenden `</body>`-Tag der Website eingefügt.'
+          listable: hidden

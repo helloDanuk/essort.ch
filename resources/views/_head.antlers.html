@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+
+{{# viewport-fit=cover -> to expand the website the whole area (notch be damned), you can add viewport-fit=cover to your meta viewport tag. https://css-tricks.com/the-notch-and-css/ #}}
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+{{# dev- und stage-Server NIEMALS indexieren! #}}
+{{ unless environment === 'production' }}
+    <meta name="robots" content="noindex">
+{{ /unless }}
+
+{{# Start SEO Pro #}}
+{{# {{ seo_pro:meta }} #}}
+{{# Ausnahmen sind alle händisch in SEO Pro pro Collection oder Entry eingestellt. #}}
+{{# End SEO Pro #}}
+
+{{ website_einstellungen:meta_tags }}
+    {{ if production_env_only }}
+        {{ if environment === 'production' }}
+            {{ code }}
+        {{ /if }}
+    {{ else }}
+        {{ code }}
+    {{ /if }}
+{{ /website_einstellungen:meta_tags }}
+
+<link rel="preload" href="/fonts/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/5c57b2e2-f641-421e-a95f-65fcb47e409a.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/14c73713-e4df-4dba-933b-057feeac8dd1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/7377dbe6-f11a-4a05-b33c-bc8ce1f60f84.woff2" as="font" type="font/woff2" crossorigin>
+
+{{ website_einstellungen:additional_styles }}
+    {{ if eingebunden === "internal" }}
+        {{ code | wrap:style }}
+    {{ else }}
+        {{ code }}
+    {{ /if }}
+{{ /website_einstellungen:additional_styles }}
+
+<link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
+
+{{# An introduction to the modern web loading performance: https://3perf.com/talks/web-perf-101/ #}}
+{{ website_einstellungen:head_scripts }}
+    {{ if production_env_only }}
+        {{ if environment == 'production' }}
+            {{ code }}
+        {{ /if }}
+    {{ else }}
+        {{ code }}
+    {{ /if }}
+{{ /website_einstellungen:head_scripts }}
+
+
+{{ partial:head-touch-icons }}

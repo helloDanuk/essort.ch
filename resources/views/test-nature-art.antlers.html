@@ -1,0 +1,33 @@
+{{ if nature_art:jahreszeit === "fruehling" }}
+Frühling
+{{ nature_art:fruehling | shuffle | limit:1 }}
+    {{ bilder }}
+{{ /nature_art:fruehling }}
+
+
+{{ elseif nature_art:jahreszeit === "sommer" }}
+Sommer
+{{ nature_art:sommer | shuffle | limit:1 }}
+    {{ bilder }}
+{{ /nature_art:sommer }}
+
+
+{{ elseif nature_art:jahreszeit === "herbst" }}
+Herbst
+{{ nature_art:herbst | shuffle | limit:1 }}
+    {{ bilder }}
+{{ /nature_art:herbst }}
+
+
+{{ elseif nature_art:jahreszeit === "winter" }}
+Winter
+{{ nature_art:winter | shuffle | limit:1 }}
+    {{ bilder }}
+{{ /nature_art:winter }}
+
+
+{{ else }}
+Keine Saison gewählt
+
+
+{{ /if }}

@@ -1,0 +1,12 @@
+title: Reservieren
+email:
+  -
+    to: hello@danielkaufmann.ch
+    from: 'Restaurant Essort <no-reply@essort.ch>'
+    reply_to: '{{ email }}'
+    subject: Neue Reservation Custom
+    # html: emails/reservieren
+    text: emails/reservieren-text
+  -
+    to: hello@danielkaufmann.ch
+    subject: Neue Reservation
