@@ -13,9 +13,15 @@ return [
     */
 
     'devices' => [
-        'Laptop' => ['width' => 1440, 'height' => 900],
-        'Tablet' => ['width' => 1024, 'height' => 786],
-        'Mobile' => ['width' => 375, 'height' => 812],
+        '16" MacBook Pro (M1)' => ['width' => 1728, 'height' => 1117],
+        '14" MacBook Pro (M1)' => ['width' => 1512, 'height' => 982],
+        'MacBook Air (M1)' => ['width' => 1280, 'height' => 800],
+        '11" iPad Pro"' => ['width' => 834, 'height' => 1194],
+        '9.7" iPad' => ['width' => 768, 'height' => 1024],
+        'iPhone 13/iPhone 13 Pro' => ['width' => 390, 'height' => 844],
+        'iPhone 13 mini' => ['width' => 375, 'height' => 812],
+        'iPhone 11' => ['width' => 414, 'height' => 896],
+        'iPhone 8/4.7" iPhone SE' => ['width' => 375, 'height' => 667],
     ],
 
     /*

@@ -74,7 +74,23 @@ return [
         'class' => null,
 
         'rules' => [
-            //
+            'globals' => [
+                'website_einstellungen' => [
+                    'urls' => [
+                        '/*'
+                    ]
+                ],
+                'reservationsformular' => [
+                    'urls' => [
+                        '/*'
+                    ]
+                ],
+                'nature_art' => [
+                    'urls' => [
+                        '/*'
+                    ]
+                ],
+            ],
         ],
 
     ],

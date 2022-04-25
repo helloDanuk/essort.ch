@@ -38,7 +38,24 @@ return [
     */
 
     'widgets' => [
-        'getting_started',
+        # 'getting_started',
+        # 'updater',
+        # [
+	    #     'type' => 'collection',
+	    #     'collection' => 'blog',
+	    #     'width' => 50,
+	    #     'limit' => 10,
+		#     ],
+        [
+            'type' => 'form',
+            'form' => 'reservieren',
+            'fields' => ['name', 'age'],
+            'width' => 50,
+            'limit' => 20,
+        ],
+        'simple_analytics',
+        # 'merkblaetter',
+        # 'how_to_videos',
     ],
 
     /*
@@ -56,7 +73,7 @@ return [
     |
     */
 
-    'date_format' => 'Y-m-d',
+    'date_format' => 'j.n.Y',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +95,7 @@ return [
     |
     */
 
-    'link_to_docs' => env('STATAMIC_LINK_TO_DOCS', true),
+    'link_to_docs' => env('STATAMIC_LINK_TO_DOCS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -102,7 +119,7 @@ return [
     |
     */
 
-    'theme' => env('STATAMIC_THEME', 'rad'),
+    'theme' => env('STATAMIC_THEME', 'business'),
 
     /*
     |--------------------------------------------------------------------------
@@ -115,12 +132,15 @@ return [
     |
     */
 
-    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Statamic'),
+    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'EssortCMS'),
 
-    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', null),
+    'custom_logo_url' => [
+        'nav' => '/admin/cp/cms-logo-nav.svg',
+        'outside' => '/admin/cp/cms-logo-nav.svg'
+    ],
 
-    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
+    'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', '/admin/cp/cms-favicon.png'),
 
-    'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', null),
+    'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', '/css/cp-custom.css'),
 
 ];
