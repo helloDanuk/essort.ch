@@ -92,7 +92,6 @@ sections:
       -
         handle: technischer_kontakt
         field:
-          placeholder: 'Daniel Kaufmann, hello@danielkaufmann.ch'
           input_type: text
           antlers: false
           display: 'Technischer Kontakt'
@@ -100,10 +99,11 @@ sections:
           icon: text
           instructions: 'Die Website wird über den Update Service regelmässig gewartet.'
           listable: hidden
+          placeholder: 'Daniel Kaufmann, hello@danielkaufmann.ch'
+          read_only: true
       -
         handle: webserver
         field:
-          placeholder: 'Das Merkblatt enthält sensible Zugangsdaten und wurde separat abgegeben.'
           input_type: text
           antlers: false
           display: Webserver
@@ -111,6 +111,8 @@ sections:
           icon: text
           instructions: 'Die Website wird bei cyon in Basel gehostet und ist mit Statamic CMS erstellt. Ein Merkblatt listet alle Zugangsdaten auf. Der Webserver- und der CMS Super-Admin Zugang müssen nur in Notfällen, oder wenn Daniel Kaufmann den Support nicht mehr gewährleisten kann, verwendet werden.'
           listable: hidden
+          placeholder: 'Das Merkblatt enthält sensible Zugangsdaten und wurde separat abgegeben.'
+          read_only: true
       -
         handle: git_workflow
         field:
@@ -122,6 +124,7 @@ sections:
           instructions: 'Die Website wird mit Git versioniert. Das (private) Remote Repository liegt auf GitHub und dient auch als Backup. Auf der Live-Website ist der `main`-Branch ausgecheckt. Änderungen übers CMS werden einmal täglich committet und gepusht, wobei die im CP optional zusätzlich angebotene Versionierung im Repo ignoriert wird. Zugang zum Repo ist auf Anfrage möglich.'
           listable: hidden
           placeholder: 'https://github.com/helloDanuk/essort.ch'
+          read_only: true
       -
         handle: skripte_und_mehr
         field:
