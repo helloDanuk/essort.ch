@@ -61,6 +61,33 @@ return [
             'visibility' => 'public',
         ],
 
+        'nature-art' => [
+            'driver' => 'local',
+            'root' => public_path('nature-art'),
+            'url' => '/nature-art',
+            'visibility' => 'public',
+        ],
+
+        'downloads' => [
+            'driver' => 'local',
+            'root' => public_path('downloads'),
+            'url' => '/downloads',
+            'visibility' => 'public',
+        ],
+
+        'admin' => [
+            'driver' => 'local',
+            'root' => public_path('admin'),
+            'url' => '/admin',
+            'visibility' => 'public',
+        ],
+
+        'protected' => [
+            'driver' => 'local',
+            'root' => storage_path('app/protected'),
+            'visibility' => 'private',
+        ],
+
     ],
 
     /*
