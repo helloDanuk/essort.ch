@@ -13,7 +13,7 @@ sections:
           display: Jahreszeit
           type: button_group
           icon: button_group
-          instructions: 'Aus der gewählten Jahreszeit werden die unten festgelegten Bilder zufällig auf der Website eingeblendet.'
+          instructions: 'Aus welcher Jahreszeit sollen Bilder zufällig auf der Website eingeblendet werden?'
           listable: hidden
           instructions_position: above
           read_only: false
