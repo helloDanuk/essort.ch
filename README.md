@@ -1,40 +1,43 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+Dieses Repo enthält die öffentliche Restaurant Essort Website [essort.ch](https://www.essort.ch). Die Website wird mit Git versioniert.
 
-## About Statamic 3
+Das CMS Control Panel kann über die Adresse [https://www.essort.ch/cp](https://www.essort.ch/cp) geöffnet werden. Änderungen im CMS auf der Live/Production-Website werden automatisch gepusht.
 
-Statamic 3 is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+## Wie kommen Client Änderungen im CMS auf der Live/production Website zurück in Remote Repo?
 
-> **Note:** This repository contains the code for the Statamic application. To contribute to the core package, visit the [Statamic core package repository][cms-repo].
+Der `main`-Branch enthält die Live/Production Website. Dieser Branch ist auf dem cyon Webserver im Ordner *essort.ch* ausgecheckt. Kundenseitige Änderungen im CMS werden einmal täglich um 01:00 Uhr mit einem Cronjob zurück ins Remote Repo auf Github gepusht.
 
+Damit diese automatischen Cronjob Commits besser unterscheidet werden können, ist auf dem Webserver global der Spock User konfiguriert.
 
-## Learning Statamic
+```
+$ git config --global user.email "helloSpock@danielkaufmann.ch"
+$ git config --global user.name "helloSpock"
+$ git config --list
+```
 
-Statamic 3 has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
+Der `stage`-Branch enthält die Previewseite für Testzwecke. Er ist ebenfalls auf dem cyon Webserver ausgecheckt, liegt im Ordner *essort.stage* und ist über die Adresse [http://ywrnmkyon.cyon.link/](http://ywrnmkyon.cyon.link/) erreichbar.
 
-## Support
+Auf dem `stage`-Branch ist das CMS Control Panel deaktiviert. Der Preview-Link dient einzig dazu, grössere Anpassungen an der Website simulieren zu können.
 
-We provide official developer support on [Statamic 3 Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
+## Wie kommen lokale Änderungen (neue Features, Updates) auf den Webserver?
 
+Sobald lokale Änderungen ins Remote-Repo auf Github gepusht werden, sendet ein Webhook eine POST-Anfrage an eine Datei, welche auf dem Webserver im stage-Verzeichnis im Ordner `/public` liegt.
 
-## Contributing
+- Die stage-Website wird aktualisiert, wenn der `stage`-Branch ins Remote Repo gepusht wird.
+`…git pull && php please cache:clear && php please stache:warm`
 
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+- Die Live/Production-Website wird aktualisert, wenn der `main`-Branch ins Remote Repo gepusht wird.
+`…git pull && php please cache:clear && php please static:clear && php please stache:warm`
 
+Da das stage-Verzeichnis ausschliesslich über eine nicht öffentliche Previewdomain und nicht indexierte Website zugänglich ist, ist die Webhock-Datei einigermassen gut geschützt.
 
-## Code of Conduct
+## CMS und Addon-Updates
 
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+Ein CMS Update übers CP sperrt die jeweilige Version von `statamic/cms` in `composer.json`. Bei einem späteren Update über die Befehlszeile muss zuerst die Version manuell aktualisiert werden, bevor `composer update` ausgeführt werden kann.
 
+Besser ist es, das CMS und die Addons lokal mit `composer update` zu aktualisieren und zu pushen. Dann werden sie mit dem Webhook auf den Webserver gepullt.
 
-## Important Links
+**Wichtig**: Auf dem Webserver muss danach zusätzlich immer manuell ein `composer install` ausgeführt werden. Um den Arbeitsspeicher des cyon-Servers zu entlasten, verzichte ich darauf dies nach jedem `git pull` automatisch auszuführen.
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic 3 Documentation][docs]
-- [Statamic 3 Core Package Repo][cms-repo]
-- [Statamic 3 Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+## .env Files
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+Beide Branches haben `.env`-Files mit unterschiedlichen Einstellungen.
