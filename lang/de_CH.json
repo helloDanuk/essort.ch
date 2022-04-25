@@ -1,0 +1,34 @@
+{
+    "The :attribute must contain at least one letter.": "Das :attribute muss aus mindestens einem Zeichen bestehen.",
+    "The :attribute must contain at least one number.": "Das :attribute muss aus mindestens einer Zahl bestehen.",
+    "The :attribute must contain at least one symbol.": "Das :attribute muss aus mindestens einem Sonderzeichen bestehen.",
+    "The :attribute must contain at least one uppercase and one lowercase letter.": "Das :attribute muss aus mindestens einem Gross- und einem Kleinbuchstaben bestehen.",
+    "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "Das :attribute ist bereits in einem Datenleck aufgetaucht. Bitte wähle ein anderes :attribute.",
+
+
+    "Application Cache": "Application Cache",
+    "Content Stache": "Content Stache",
+    "Image Cache": "Image Cache",
+    "Static Page Cache": "Static Page Cache",
+
+
+    "Min Rows": "Minimal zulässige Zeilen",
+
+
+    "A valid blueprint is required.": "Ein gültiges Blueprint ist erforderlich.",
+
+
+    "Create Revision": "Überarbeitung erstellen",
+    "No revisions": "Keine Überarbeitungen",
+
+    "Restore Revision": "Überarbeitung wiederherstellen",
+
+    "Revision created": "Überarbeitung erstellt",
+    "Revision deleted": "Überarbeitung gelöscht",
+    "Revision History": "Änderungsverlauf",
+    "Revision restored": "Überarbeitung wiederhergestellt",
+    "Revision saved": "Überarbeitung gespeichert",
+    "Revisions": "Überarbeitungen",
+
+    "Search Indexes": "Suchindexe"
+}
