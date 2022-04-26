@@ -5,12 +5,12 @@ id: aa2392aa-7fcf-413c-bbee-5c241b78ef1c
 password_hash: $2y$10$uu1c30iJOD0WyUlzcTFugOw2YaDWFtH/yR0KbR/oka5CZPszKgaKa
 preferences:
   locale: en
-  widgets:
-    -
-      type: updater
-      width: 50
-    -
-      type: seo_pro
-      width: 50
-    -
-      type: simple_analytics
+  # widgets:
+  #   -
+  #     type: updater
+  #     width: 50
+  #   -
+  #     type: seo_pro
+  #     width: 50
+  #   -
+  #     type: simple_analytics

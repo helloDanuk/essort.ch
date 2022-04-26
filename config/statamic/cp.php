@@ -53,8 +53,12 @@ return [
             'width' => 50,
             'limit' => 20,
         ],
+        [
+            'type' => 'seo_pro',
+	        'width' => 50,
+        ],
         'simple_analytics',
-        # 'merkblaetter',
+        'merkblaetter',
         # 'how_to_videos',
     ],
 
