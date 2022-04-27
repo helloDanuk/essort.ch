@@ -38,7 +38,16 @@ return [
     */
 
     'widgets' => [
-        # 'getting_started',
+        [
+            'type' => 'los_gehts',
+	        'width' => 100,
+        ],
+        [
+            'type' => 'collection',
+            'collection' => 'pages',
+	        'width' => 50,
+        ],
+        'getting_started',
         # 'updater',
         # [
 	    #     'type' => 'collection',
